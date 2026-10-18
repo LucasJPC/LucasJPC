@@ -1,0 +1,22 @@
+:root{--sun:#f5b301;--ink:#14213d;--bg:#fffdf7;--card:#fff;--line:#e8e2d0}
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,sans-serif;color:var(--ink);background:var(--bg);line-height:1.5}
+.nav{position:sticky;top:0;z-index:1000;display:flex;justify-content:space-between;align-items:center;padding:12px 5vw;background:var(--ink);color:#fff;flex-wrap:wrap;gap:8px}
+.nav a{color:#fff;margin-left:16px;text-decoration:none}.logo{color:var(--sun)}
+.hero{padding:12vh 5vw;text-align:center;background:linear-gradient(135deg,#14213d,#27406e 60%,#f5b301);color:#fff}
+.hero h1{font-size:clamp(2rem,5vw,3.5rem);margin:0 0 12px}
+.btn{display:inline-block;background:var(--sun);color:var(--ink);border:0;padding:12px 22px;border-radius:8px;font-weight:700;text-decoration:none;cursor:pointer}
+.wrap{max-width:1100px;margin:0 auto;padding:48px 5vw}
+.stats{display:flex;gap:16px;flex-wrap:wrap}.stats div{flex:1;min-width:140px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;text-align:center}.stats b{display:block;font-size:2rem;color:#c78a00}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+.cards article,.cards figure{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;margin:0}
+.filters{display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap}
+.filters button{border:1px solid var(--line);background:#fff;padding:8px 14px;border-radius:999px;cursor:pointer}.filters .on{background:var(--ink);color:#fff}
+.maparea{display:grid;grid-template-columns:2fr 1fr;gap:16px}
+#map{height:520px;border-radius:12px;border:1px solid var(--line)}
+#detail{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;max-height:520px;overflow:auto}
+#detail img{width:100%;border-radius:8px;margin-bottom:8px}#detail video,#detail iframe{width:100%;border-radius:8px;border:0;aspect-ratio:16/9}
+#detail table{width:100%;border-collapse:collapse}#detail td{padding:4px 0;border-bottom:1px solid var(--line)}#detail td:last-child{text-align:right;font-weight:600}
+.muted{color:#6b7280}
+form{display:grid;gap:10px;max-width:520px}input,textarea{padding:10px;border:1px solid var(--line);border-radius:8px;font:inherit}
+footer{text-align:center;padding:24px;background:var(--ink);color:#fff}
+@media(max-width:800px){.maparea{grid-template-columns:1fr}#map{height:380px}}

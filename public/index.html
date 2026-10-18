@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SolarAndes — Energía solar</title>
+<meta name="description" content="Instalación de energía solar residencial, comercial e industrial.">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+<header class="nav">
+  <strong class="logo">☀ SolarAndes</strong>
+  <nav><a href="#empresa">Empresa</a><a href="#servicios">Servicios</a><a href="#mapa">Proyectos</a><a href="#videos">Videos</a><a href="#contacto">Contacto</a></nav>
+</header>
+
+<section class="hero">
+  <h1>Energía solar que se ve (y se mide)</h1>
+  <p>Diseñamos, instalamos y mantenemos sistemas fotovoltaicos para hogares, comercios e industria.</p>
+  <a class="btn" href="#mapa">Ver proyectos en el mapa</a>
+</section>
+
+<section id="empresa" class="wrap">
+  <h2>Sobre la empresa</h2>
+  <p>Más de 10 años transformando la luz del sol en ahorro. Nuestro equipo de ingenieros acompaña cada proyecto, desde el estudio hasta la puesta en marcha.</p>
+  <div class="stats"><div><b id="s-count">–</b>proyectos</div><div><b id="s-mw">–</b>MWp instalados</div><div><b id="s-co2">–</b>t CO₂ evitadas / año</div></div>
+</section>
+
+<section id="servicios" class="wrap">
+  <h2>Servicios</h2>
+  <div class="cards">
+    <article><h3>Residencial</h3><p>Sistemas on-grid y con baterías para tu hogar.</p></article>
+    <article><h3>Comercial</h3><p>Reduce la cuenta de luz de tu negocio.</p></article>
+    <article><h3>Industrial</h3><p>Plantas de gran escala y autoconsumo.</p></article>
+    <article><h3>Mantenimiento</h3><p>Monitoreo, limpieza y soporte técnico.</p></article>
+  </div>
+</section>
+
+<section id="mapa" class="wrap">
+  <h2>Mapa de proyectos</h2>
+  <div class="filters" id="filters">
+    <button data-type="" class="on">Todos</button><button data-type="residencial">Residencial</button><button data-type="comercial">Comercial</button><button data-type="industrial">Industrial</button>
+  </div>
+  <div class="maparea"><div id="map"></div><aside id="detail"><p class="muted">Selecciona un marcador para ver fotos, video y datos técnicos.</p></aside></div>
+</section>
+
+<section id="videos" class="wrap">
+  <h2>Videos</h2>
+  <div class="cards" id="video-list"><p class="muted">Aún no hay videos cargados. Agrega <code>video_url</code> a un proyecto en la base de datos.</p></div>
+</section>
+
+<section id="contacto" class="wrap">
+  <h2>Contacto</h2>
+  <p>📧 contacto@solarandes.example · 📞 +56 2 0000 0000</p>
+  <form onsubmit="event.preventDefault();this.querySelector('button').textContent='¡Gracias! Te contactaremos.'">
+    <input required placeholder="Nombre"><input required type="email" placeholder="Email"><textarea required placeholder="Cuéntanos tu proyecto"></textarea><button class="btn">Enviar</button>
+  </form>
+</section>
+
+<footer>© 2026 SolarAndes</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script src="/app.js"></script>
+</body>
+</html>

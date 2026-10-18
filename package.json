@@ -1,0 +1,8 @@
+{
+  "name": "web-empresa-solar",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Sitio web de empresa solar con mapa interactivo de proyectos",
+  "scripts": { "start": "node server.js" },
+  "engines": { "node": ">=22.5" }
+}
