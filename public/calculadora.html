@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Calculadora solar residencial — SolarAndes</title>
+<meta name="description" content="Calculá cuántos paneles necesita tu casa y cuánto ahorrás. Subí tu factura en PDF y se completa sola.">
+<link rel="stylesheet" href="/styles.css">
+<link rel="stylesheet" href="/calc.css">
+</head>
+<body>
+<header class="nav">
+  <a class="logo" href="/" style="margin:0;font-weight:700">☀ SolarAndes</a>
+  <nav><a href="/">Inicio</a><a href="/calculadora.html">Calculadora solar</a><a href="/#contacto">Contacto</a></nav>
+</header>
+
+<main class="wrap calc">
+  <h1>Calculadora solar residencial</h1>
+  <p class="muted">Subí tu factura de luz en PDF y completamos los datos por vos, o cargalos a mano.</p>
+
+  <section class="upload" id="drop">
+    <div>
+      <strong>📄 Subir factura (PDF)</strong>
+      <p class="muted" id="upload-msg">La lectura se hace en tu navegador: el archivo no sale de tu equipo.</p>
+    </div>
+    <label class="btn" for="file">Elegir PDF</label><input type="file" id="file" accept="application/pdf,.pdf" hidden>
+  </section>
+  <div id="bill-result" class="bill-result" hidden></div>
+
+  <div class="grid">
+    <form id="form" autocomplete="off">
+      <h2>Datos de tu hogar</h2>
+      <label>Ciudad <select id="city"></select></label>
+      <label>Consumo mensual (kWh) <input type="number" id="monthlyKwh" min="1" step="1" value="350"></label>
+      <div class="two">
+        <label>Moneda <select id="currency"><option>ARS</option><option>CLP</option><option>USD</option></select></label>
+        <label>Tarifa (<span class="cur">$</span>/kWh) <input type="number" id="tariff" min="0" step="0.01" value="120"></label>
+      </div>
+      <label>Cobertura buscada: <b id="covLabel">100</b>% del consumo <input type="range" id="coverage" min="30" max="120" step="5" value="100"></label>
+      <div class="two">
+        <label>Orientación del techo
+          <select id="orientation"><option value="N">Norte (ideal)</option><option value="NE">Noreste</option><option value="NO">Noroeste</option><option value="E">Este</option><option value="O">Oeste</option><option value="SE">Sureste</option><option value="SO">Suroeste</option><option value="S">Sur</option><option value="PLANO">Techo plano</option></select></label>
+        <label>Superficie disponible (m², opcional) <input type="number" id="roofArea" min="0" step="1" placeholder="sin límite"></label>
+      </div>
+      <details>
+        <summary>Supuestos avanzados</summary>
+        <div class="two">
+          <label>Costo instalado (<span class="cur">$</span>/kWp) <input type="number" id="costPerKwp" min="0" step="1"></label>
+          <label>Potencia del panel (W) <input type="number" id="panelW" min="300" max="800" step="5" value="550"></label>
+          <label>Horas sol pico (kWh/m²/día) <input type="number" id="hsp" min="1" max="8" step="0.1"></label>
+          <label>Rendimiento del sistema (%) <input type="number" id="performance" min="60" max="95" step="1" value="80"></label>
+          <label>Aumento anual de tarifa (%) <input type="number" id="tariffGrowth" min="0" max="100" step="1" value="5"></label>
+          <label>Degradación anual (%) <input type="number" id="degradation" min="0" max="3" step="0.1" value="0.5"></label>
+        </div>
+      </details>
+    </form>
+
+    <section id="results" class="results"></section>
+  </div>
+  <p class="muted small">Estimación orientativa basada en promedios de irradiación y supuestos de costo editables. No reemplaza un estudio técnico de sitio ni una cotización formal.</p>
+</main>
+
+<script src="/vendor/pdf.min.js"></script>
+<script src="/js/solar.js"></script>
+<script src="/js/bill-parser.js"></script>
+<script src="/js/calc.js"></script>
+</body>
+</html>
