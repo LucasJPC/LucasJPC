@@ -1,0 +1,127 @@
+[
+  {
+    "id": 1,
+    "name": "Planta Solar Atacama",
+    "type": "industrial",
+    "city": "Calama",
+    "lat": -22.4546,
+    "lng": -68.9294,
+    "description": "Planta fotovoltaica para operación minera.",
+    "power_kwp": 5200,
+    "panels": 9400,
+    "annual_kwh": 11200000,
+    "co2_tons": 5600,
+    "year": 2023,
+    "video_url": null,
+    "photos": [
+      {
+        "url": "/img/1-1.svg",
+        "caption": "Vista general"
+      },
+      {
+        "url": "/img/1-2.svg",
+        "caption": "Paneles instalados"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Residencial Los Olivos",
+    "type": "residencial",
+    "city": "Santiago",
+    "lat": -33.4489,
+    "lng": -70.6693,
+    "description": "Sistema on-grid para vivienda familiar.",
+    "power_kwp": 6.5,
+    "panels": 12,
+    "annual_kwh": 9800,
+    "co2_tons": 4.9,
+    "year": 2024,
+    "video_url": null,
+    "photos": [
+      {
+        "url": "/img/2-1.svg",
+        "caption": "Vista general"
+      },
+      {
+        "url": "/img/2-2.svg",
+        "caption": "Paneles instalados"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Centro Comercial Sol",
+    "type": "comercial",
+    "city": "La Serena",
+    "lat": -29.9027,
+    "lng": -71.2519,
+    "description": "Techos solares para centro comercial.",
+    "power_kwp": 480,
+    "panels": 860,
+    "annual_kwh": 780000,
+    "co2_tons": 390,
+    "year": 2022,
+    "video_url": null,
+    "photos": [
+      {
+        "url": "/img/3-1.svg",
+        "caption": "Vista general"
+      },
+      {
+        "url": "/img/3-2.svg",
+        "caption": "Paneles instalados"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "name": "Bodega Agroindustrial Maule",
+    "type": "industrial",
+    "city": "Talca",
+    "lat": -35.4264,
+    "lng": -71.6554,
+    "description": "Autoconsumo para cámaras de frío.",
+    "power_kwp": 350,
+    "panels": 630,
+    "annual_kwh": 520000,
+    "co2_tons": 260,
+    "year": 2023,
+    "video_url": null,
+    "photos": [
+      {
+        "url": "/img/4-1.svg",
+        "caption": "Vista general"
+      },
+      {
+        "url": "/img/4-2.svg",
+        "caption": "Paneles instalados"
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "name": "Hotel Costa Sur",
+    "type": "comercial",
+    "city": "Puerto Montt",
+    "lat": -41.4693,
+    "lng": -72.9424,
+    "description": "Agua caliente y electricidad solar.",
+    "power_kwp": 85,
+    "panels": 150,
+    "annual_kwh": 98000,
+    "co2_tons": 49,
+    "year": 2024,
+    "video_url": null,
+    "photos": [
+      {
+        "url": "/img/5-1.svg",
+        "caption": "Vista general"
+      },
+      {
+        "url": "/img/5-2.svg",
+        "caption": "Paneles instalados"
+      }
+    ]
+  }
+]

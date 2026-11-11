@@ -20,8 +20,18 @@ function show(p) {
     <tr><td>Generación anual</td><td>${fmt(p.annual_kwh)} kWh</td></tr><tr><td>CO₂ evitado</td><td>${fmt(p.co2_tons)} t/año</td></tr></table>`;
 }
 
+// Usa la API (node server.js); si no existe (hosting estático, p. ej. Vercel) cae al JSON exportado.
+async function fetchProjects(type) {
+  try {
+    const r = await fetch('/api/projects' + (type ? `?type=${type}` : ''));
+    if (r.ok && (r.headers.get('content-type') || '').includes('json')) return await r.json();
+  } catch (e) { /* sin API */ }
+  const all = await (await fetch('/data/projects.json')).json();
+  return type ? all.filter((p) => p.type === type) : all;
+}
+
 async function load(type = '') {
-  const projects = await (await fetch('/api/projects' + (type ? `?type=${type}` : ''))).json();
+  const projects = await fetchProjects(type);
   layer.clearLayers();
   projects.forEach((p) => L.marker([p.lat, p.lng]).addTo(layer).bindTooltip(p.name).on('click', () => show(p)));
   if (projects.length) map.fitBounds(projects.map((p) => [p.lat, p.lng]), { padding: [40, 40], maxZoom: 8 });

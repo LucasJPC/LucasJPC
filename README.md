@@ -19,4 +19,5 @@ node server.js     # Node >= 22.5, sin dependencias → http://localhost:3000
 
 ### Tests y despliegue
 - `npm test` corre las pruebas del cálculo y del lector de facturas (`tests/`).
-- **Vercel / hosting estático**: `vercel.json` publica `public/`. La calculadora funciona 100 % en el navegador, así que no necesita servidor. El mapa de proyectos de la home sí usa `/api/projects` (Node + SQLite) y requiere correr `node server.js` en un hosting con Node.
+- **Vercel / hosting estático**: `vercel.json` publica `public/`. La calculadora funciona 100 % en el navegador. El mapa usa `/api/projects` si existe (`node server.js`) y, si no, los archivos estáticos `public/data/projects.json` e `public/img/`.
+- **Si cambiás proyectos o videos** (base SQLite) y publicás en hosting estático, regenerá los archivos: con `node server.js` corriendo, ejecutá `node scripts/export-static.js http://localhost:3000` y subí los cambios.
