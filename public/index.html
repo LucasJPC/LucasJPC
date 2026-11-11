@@ -11,13 +11,13 @@
 <body>
 <header class="nav">
   <strong class="logo">☀ SolarAndes</strong>
-  <nav><a href="#empresa">Empresa</a><a href="#servicios">Servicios</a><a href="#mapa">Proyectos</a><a href="#videos">Videos</a><a href="#contacto">Contacto</a></nav>
+  <nav><a href="#empresa">Empresa</a><a href="#servicios">Servicios</a><a href="/calculadora.html">Calculadora solar</a><a href="#mapa">Proyectos</a><a href="#videos">Videos</a><a href="#contacto">Contacto</a></nav>
 </header>
 
 <section class="hero">
   <h1>Energía solar que se ve (y se mide)</h1>
   <p>Diseñamos, instalamos y mantenemos sistemas fotovoltaicos para hogares, comercios e industria.</p>
-  <a class="btn" href="#mapa">Ver proyectos en el mapa</a>
+  <a class="btn" href="/calculadora.html">Calculá tu ahorro solar</a> <a class="btn" href="#mapa" style="background:#fff">Ver proyectos en el mapa</a>
 </section>
 
 <section id="empresa" class="wrap">
@@ -53,12 +53,13 @@
   <h2>Contacto</h2>
   <p>📧 contacto@solarandes.example · 📞 +56 2 0000 0000</p>
   <form onsubmit="event.preventDefault();this.querySelector('button').textContent='¡Gracias! Te contactaremos.'">
-    <input required placeholder="Nombre"><input required type="email" placeholder="Email"><textarea required placeholder="Cuéntanos tu proyecto"></textarea><button class="btn">Enviar</button>
+    <input required placeholder="Nombre"><input required type="email" placeholder="Email"><textarea id="msg" required placeholder="Cuéntanos tu proyecto"></textarea><button class="btn">Enviar</button>
   </form>
 </section>
 
 <footer>© 2026 SolarAndes</footer>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 <script src="/app.js"></script>
+<script>try{const m=sessionStorage.getItem('quoteMsg');if(m){document.getElementById('msg').value=m;sessionStorage.removeItem('quoteMsg')}}catch(e){}</script>
 </body>
 </html>
