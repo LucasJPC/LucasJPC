@@ -52,14 +52,20 @@
 <section id="contacto" class="wrap">
   <h2>Contacto</h2>
   <p>📧 contacto@solarandes.example · 📞 +56 2 0000 0000</p>
-  <form onsubmit="event.preventDefault();this.querySelector('button').textContent='¡Gracias! Te contactaremos.'">
-    <input required placeholder="Nombre"><input required type="email" placeholder="Email"><textarea id="msg" required placeholder="Cuéntanos tu proyecto"></textarea><button class="btn">Enviar</button>
+  <form id="contact-form">
+    <input name="name" required maxlength="100" placeholder="Nombre" autocomplete="name">
+    <input name="email" required type="email" maxlength="200" placeholder="Email" autocomplete="email">
+    <textarea id="msg" name="message" required maxlength="4000" placeholder="Cuéntanos tu proyecto"></textarea>
+    <input name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px">
+    <button class="btn">Enviar</button>
+    <p id="contact-status" role="status" class="muted"></p>
   </form>
 </section>
 
 <footer>© 2026 SolarAndes</footer>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 <script src="/app.js"></script>
+<script src="/contact.js"></script>
 <script>try{const m=sessionStorage.getItem('quoteMsg');if(m){document.getElementById('msg').value=m;sessionStorage.removeItem('quoteMsg')}}catch(e){}</script>
 </body>
 </html>

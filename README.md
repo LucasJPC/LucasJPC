@@ -21,3 +21,14 @@ node server.js     # Node >= 22.5, sin dependencias → http://localhost:3000
 - `npm test` corre las pruebas del cálculo y del lector de facturas (`tests/`).
 - **Vercel / hosting estático**: `vercel.json` publica `public/`. La calculadora funciona 100 % en el navegador. El mapa usa `/api/projects` si existe (`node server.js`) y, si no, los archivos estáticos `public/data/projects.json` e `public/img/`.
 - **Si cambiás proyectos o videos** (base SQLite) y publicás en hosting estático, regenerá los archivos: con `node server.js` corriendo, ejecutá `node scripts/export-static.js http://localhost:3000` y subí los cambios.
+
+### Formulario de contacto (correo)
+`POST /api/contact` (`api/contact.js` en Vercel, `server.js` en local) valida los datos, filtra spam (campo trampa + límite de 5 envíos/10 min por IP) y envía el correo con [Resend](https://resend.com). Variables de entorno (en Vercel: *Settings → Environment Variables*; nunca en el código):
+
+| Variable | Descripción |
+|---|---|
+| `RESEND_API_KEY` | API key de Resend (obligatoria) |
+| `CONTACT_TO` | Correo que recibe los mensajes (obligatoria) |
+| `CONTACT_FROM` | Remitente (opcional). Por defecto `onboarding@resend.dev`, que solo puede enviar al correo con el que se creó la cuenta de Resend. Para otro destino, verificá un dominio propio en Resend. |
+
+Sin esas variables el formulario responde «no está configurado todavía».

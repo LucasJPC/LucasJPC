@@ -3,6 +3,7 @@ const http = require('node:http');
 const fs = require('node:fs');
 const path = require('node:path');
 const { DatabaseSync } = require('node:sqlite');
+const { sendContact } = require('./lib/send-contact');
 
 const PORT = process.env.PORT || 3000;
 const PUBLIC = path.join(__dirname, 'public');
@@ -61,6 +62,17 @@ const json = (res, code, body) => { res.writeHead(code, { 'Content-Type': 'appli
 
 http.createServer((req, res) => {
   const url = new URL(req.url, 'http://localhost');
+  if (req.method === 'POST' && url.pathname === '/api/contact') {
+    let raw = '';
+    req.on('data', (c) => { raw += c; if (raw.length > 20000) req.destroy(); });
+    req.on('end', async () => {
+      let body = {};
+      try { body = JSON.parse(raw); } catch (e) { /* cuerpo inválido */ }
+      try { const out = await sendContact(body, { ip: req.socket.remoteAddress }); json(res, out.status, out.body); }
+      catch (e) { json(res, 500, { error: 'Error interno.' }); }
+    });
+    return;
+  }
   if (req.method !== 'GET') return json(res, 405, { error: 'Método no permitido' });
 
   if (url.pathname === '/api/projects') {
