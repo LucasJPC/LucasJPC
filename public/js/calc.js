@@ -94,8 +94,13 @@
         <tr><td>CO₂ evitado por año</td><td>${fmt(r.co2, 2)} t</td></tr>
         <tr><td>Equivalente en árboles</td><td>≈ ${fmt(r.trees)}</td></tr></table></div>
       <p class="print-only muted small">Estimación orientativa: horas sol pico ${i.hsp} kWh/m²/día, rendimiento ${fmt(i.performance * 100)}%, orientación ${esc($('orientation').selectedOptions[0].text)}, costo ${money(i.costPerKwp)}/kWp, tarifa ${money(i.tariff)}/kWh con aumento anual de ${fmt(i.tariffGrowth * 100)}%. No reemplaza un estudio técnico ni una cotización.</p>
-      <div class="actions"><button class="btn" id="print" type="button">🖨 Descargar informe (PDF)</button></div>`;
+      <div class="actions"><button class="btn" id="print" type="button">🖨 Descargar informe (PDF)</button><button class="btn alt" id="quote" type="button">Pedir cotización</button></div>`;
     $('print').onclick = () => window.print();
+    $('quote').onclick = () => {
+      const msg = `Quiero una cotización de sistema solar residencial.\nCiudad: ${$('city').value}\nConsumo mensual: ${fmt(i.monthlyKwh)} kWh\nSistema estimado: ${fmt(r.kwp, 2)} kWp (${r.panels} paneles de ${i.panelW} W)\nInversión estimada: ${money(r.cost)}\nAhorro año 1: ${money(r.year1Saving)}`;
+      try { sessionStorage.setItem('quoteMsg', msg); } catch (e) {}
+      location.href = '/#contacto';
+    };
   }
 
   // ---------- Lectura de la factura ----------

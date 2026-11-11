@@ -48,16 +48,21 @@
     const d1 = flat.match(/(\d{2,3})\s*d[ií]as/i);
     if (d1 && +d1[1] >= 20 && +d1[1] <= 130) days = +d1[1];
     if (!days) {
+      const d2 = flat.match(/d[ií]as\s+(?:facturados|del\s+per[ií]odo|de\s+consumo|facturaci[oó]n)\s*[:=]?\s*(\d{2,3})/i);
+      if (d2 && +d2[1] >= 20 && +d2[1] <= 130) days = +d2[1];
+    }
+    if (!days) {
       const per = flat.match(/(?:per[ií]odo|desde)[^\d]{0,25}(\d{1,2}[\/\-.]\d{1,2}[\/\-.]\d{2,4})[^\d]{1,25}(\d{1,2}[\/\-.]\d{1,2}[\/\-.]\d{2,4})/i);
       if (per) {
         const a = parseDate(per[1]), b = parseDate(per[2]);
         if (a && b) { const d = Math.round((b - a) / 864e5); if (d >= 20 && d <= 130) days = d; }
       }
     }
-    if (!days && /bimestr|bimensual/i.test(flat)) days = 60;
+    if (!days && /bimestr|bimensual/i.test(flat)) days = 61;
     if (days) { out.days = days; out.found.days = true; }
     if (kwh) {
-      const months = days ? days / 30.4 : 1;
+      let months = days ? days / 30.4 : 1;
+      if (Math.abs(months - Math.round(months)) < 0.12) months = Math.round(months); // 28-33 d => 1 mes, 58-65 d => 2 meses
       out.monthlyKwh = Math.round(months > 0.8 && months < 1.25 ? kwh : kwh / (months < 0.8 ? 1 : months));
       if (days && months >= 1.5) out.notes.push(`El período facturado es de ${days} días: se llevó el consumo a base mensual.`);
       if (!days) out.notes.push('No se pudo detectar el período facturado; se asumió consumo mensual. Verificalo.');

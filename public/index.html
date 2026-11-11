@@ -53,12 +53,13 @@
   <h2>Contacto</h2>
   <p>📧 contacto@solarandes.example · 📞 +56 2 0000 0000</p>
   <form onsubmit="event.preventDefault();this.querySelector('button').textContent='¡Gracias! Te contactaremos.'">
-    <input required placeholder="Nombre"><input required type="email" placeholder="Email"><textarea required placeholder="Cuéntanos tu proyecto"></textarea><button class="btn">Enviar</button>
+    <input required placeholder="Nombre"><input required type="email" placeholder="Email"><textarea id="msg" required placeholder="Cuéntanos tu proyecto"></textarea><button class="btn">Enviar</button>
   </form>
 </section>
 
 <footer>© 2026 SolarAndes</footer>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 <script src="/app.js"></script>
+<script>try{const m=sessionStorage.getItem('quoteMsg');if(m){document.getElementById('msg').value=m;sessionStorage.removeItem('quoteMsg')}}catch(e){}</script>
 </body>
 </html>
